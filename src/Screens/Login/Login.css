@@ -2,12 +2,11 @@
     --primary: #000000;
     --primary-dark: #292929;
     --primary-light: #5DA8FF;
-    --secondary: #1D1D1D;
+    --secondary: white;
     --social-background: #E9E9E9;
     --social-background-hover: #dddddd;
-    --text: #1F2346;
-    --white: #FFFFFF;
-    --violet: #8e2de2;
+    --text: white;
+    --white: #BCBEB9;
 }
 
 * {
@@ -25,7 +24,7 @@ body {
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .socials-row {
@@ -62,8 +61,9 @@ body {
 
 .login-welcome-row {
     margin-bottom: 1rem;
-    font-size: 10px;
+    font-size: 15px;
     text-align: center;
+    color: white;
 }
 
 .welcome-message {
