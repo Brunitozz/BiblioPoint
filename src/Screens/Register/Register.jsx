@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
-import "./Registro.css";
+import "./Register.css";
 
-export default function Registro() {
+export default function Register() {
   const registerFormRef = useRef(null);
 
   useEffect(() => {
