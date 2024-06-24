@@ -13,7 +13,8 @@ import Navabar from "./Components/Navabar/Navabar.jsx";
 function App() {
   return (
     <Router>
-      <Main />
+      <Navabar />
+      <Login />
     </Router>
   );
 }
