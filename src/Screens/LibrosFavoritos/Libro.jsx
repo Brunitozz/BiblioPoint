@@ -1,8 +1,8 @@
 import React from "react";
 
-const Amigo = ({ name, image }) => {
+const Libro = ({ name, image, author }) => {
   const handleClick = () => {
-    window.location.href = "http://localhost:5173/amigos"; // #TODO url del perfil de amigo
+    window.location.href = "http://localhost:5173/libros"; //#TODO colocar url de la pag del libro
   };
 
   return (
@@ -14,8 +14,9 @@ const Amigo = ({ name, image }) => {
         onClick={handleClick}
       />
       <div className="font-semibold">{name}</div>
+      <div className="text-gray-600">{author}</div>
     </div>
   );
 };
 
-export default Amigo;
+export default Libro;
