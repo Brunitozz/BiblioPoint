@@ -15,8 +15,6 @@ export const App = () => {
           <Routes>
             <Route path="/">
               <Route path="register" element={<Register />} />
-              <Route path="sidebarcuenta" element={<SideBarCuenta />} />
-              <Route path="sidebarperfil" element={<SideBarPerfil />} />
               <Route path="login" element={<Login />} />
               <Route path="edit-profile/:id" element={<EditarPerfil />} />
               <Route path="amigos" element={<Amigos />} />
