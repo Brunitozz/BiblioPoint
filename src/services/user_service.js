@@ -1,4 +1,4 @@
-const api = 'http://127.0.0.1:5000'
+import { api } from "../constants/api";
 
 const api_user = `${api}/user`
 
