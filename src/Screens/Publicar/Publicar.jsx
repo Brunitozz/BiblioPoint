@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
+import { useBooks } from '../../hooks/useBooks'
+import { postPost } from '../../services/post_service'
 
 const ButtonOpenDialog = () => {
   const handleDialog = () => {
@@ -28,8 +30,46 @@ const ButtonOpenDialog = () => {
 }
 
 export const Publicar = () => {
+  const [search, setSearch] = useState('')
+  const [booksSearch, setBooksSearch] = useState(null)
+  const [content, setContent] = useState('')
+  const [selectIdBook, setSelectIdBook] = useState('')
 
+  const { books } = useBooks()
 
+  const handleChange = useCallback((e) => {
+    const { name, value } = e.target;
+    if (name === 'search') {
+
+      setSearch(value);
+      if (value.trim().length > 2) {
+        const searchBooks = books.filter(book => book.name.toLowerCase().startsWith(value.toLowerCase()));
+        setBooksSearch(searchBooks);
+      } else {
+        setBooksSearch([]);
+      }
+    } else if (name === 'content') {
+      setContent(value);
+    }
+  }, [books]);
+
+  const handleSelectBook = useCallback((book) => {
+    setSelectIdBook(book.id_book);
+    setSearch(book.name);
+    setBooksSearch([]);
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    {/*NOTE: falta el id del id del user*/ }
+    const response = await postPost({ id_user_post: 3, id_book: selectIdBook, content });
+    if (response) {
+      alert('Post Creado')
+    } else {
+      alert('Error al crear el post')
+    }
+  }
 
   return (
     <>
@@ -37,9 +77,39 @@ export const Publicar = () => {
       <ButtonOpenDialog />
       <dialog id='dialog-add-post' className='w-[90%] py-4 px-12 bg-gray-300 m-auto fixed backdrop:bg-black/50 rounded-xl'>
         <h3 className='text-center uppercase text-3xl my-4'>Crear Post</h3>
-        <form className='flex flex-col gap-4'>
-          <input type="text" placeholder='Título' className='w-full rounded-lg px-2 py-1 my-2' />
-          <textarea placeholder='Contenido' className='w-full h-52 rounded-lg px-2 py-1 my-2 resize-none' />
+        <form className='flex flex-col gap-4 relative' onSubmit={handleSubmit}>
+          <input
+            onChange={handleChange}
+            value={search}
+            name='search'
+            type="text"
+            placeholder='Buscar libro...'
+            className='w-full rounded-lg px-2 py-1 my-2'
+            required
+          />
+          {booksSearch && booksSearch.length > 0 && (
+            <span className='absolute w-full top-12 bg-gray-200 h-36 overflow-y-scroll border-2 border-gray-400 rounded-lg'>
+              {booksSearch.map(book => (
+                <button
+                  type='button'
+                  key={book.id}
+                  onClick={() => handleSelectBook(book)}
+                  className='w-full px-2 py-1 hover:bg-gray-300'
+                >
+                  {book.name}
+                </button>
+              ))}
+            </span>
+          )}
+
+          <textarea
+            onChange={handleChange}
+            value={content}
+            name='content'
+            placeholder='Contenido'
+            className='w-full h-52 rounded-lg px-2 py-1 my-2 resize-none'
+            required
+          />
           <div className='text-end'>
             <button className='bg-cyan-900 text-white text-end rounded-lg px-8 py-2 hover:bg-cyan-700'>Publicar</button>
           </div>
