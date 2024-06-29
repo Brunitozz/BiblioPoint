@@ -6,9 +6,9 @@
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
-    position:relative;
-    left:750px;
-    top:170px
+    position:relative ;
+    left:280px;
+    top:240px
   }
   
   .recommended-friends {
