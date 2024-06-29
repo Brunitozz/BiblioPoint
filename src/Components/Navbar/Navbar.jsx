@@ -32,11 +32,7 @@ export const Navbar = () => {
         <nav className="menu__wrapper">
           <div className="logo__wrapper">
             {/* logo */}
-            <img
-              className="logo__image"
-              src={logo}
-              alt="BiblioPoint"
-            />
+            <img className="logo__image" src={logo} alt="BiblioPoint" />
             <a href="#" className="page__title">
               BIBLIOPOINT
             </a>
@@ -49,11 +45,7 @@ export const Navbar = () => {
         </nav>
         <div className="navigation__menu none">
           <div className="avatar-wrapper">
-            <img
-              className="avatar-profile"
-              src={logo}
-              alt="Profile"
-            />
+            <img className="avatar-profile" src={logo} alt="Profile" />
             <div className="avatar-name-wrapper">
               <div className="avatar-name-alias">a7v8x</div>
               <div className="avatar-name">David Mraz</div>
@@ -71,4 +63,4 @@ export const Navbar = () => {
       </div>
     </>
   );
-}
+};
