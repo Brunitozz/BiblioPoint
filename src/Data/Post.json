@@ -1,0 +1,39 @@
+[
+    {
+        "id": 1,
+        "content": "Hoy quiero compartir una cita inspiradora: 'La vida es 10% lo que te ocurre y 90% cómo reaccionas a ello.' - Charles R. Swindoll.",
+        "author": "Maria Lopez",
+        "likes": 25,
+        "dislikes": 3,
+        "comments": [
+          {
+            "author": "Carlos Perez",
+            "text": "¡Qué gran cita! Me recuerda a mantener siempre una actitud positiva."
+          },
+          {
+            "author": "Ana Martinez",
+            "text": "Exactamente, la actitud es todo. Gracias por compartir."
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "content": "Hoy fue un día increíble. Fui a escalar montañas y disfruté de unas vistas espectaculares. La naturaleza realmente tiene un efecto calmante en el alma.",
+        "author": "Luis Hernandez",
+        "likes": 40,
+        "dislikes": 5,
+        "comments": [
+          {
+            "author": "Sofia Gutierrez",
+            "text": "¡Qué envidia! Me encantaría ir a escalar alguna vez."
+          },
+          {
+            "author": "Jorge Ramirez",
+            "text": "Las montañas son maravillosas. Es genial que hayas tenido un buen día."
+          }
+        ]
+      }
+      
+      
+  ]
+  

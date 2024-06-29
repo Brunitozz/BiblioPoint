@@ -1,0 +1,80 @@
+.post {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #7a6b6b;
+    transition: transform 0.2s;
+  }
+  
+  .post:hover {
+    transform: scale(1.02);
+  }
+  
+  .post-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .post-id {
+    font-weight: bold;
+  }
+  
+  .post-author {
+    font-style: italic;
+  }
+  
+  .post p {
+    margin: 0 0 10px;
+  }
+  
+  .post-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px; /* Espacio entre los botones */
+    justify-content: flex-start;
+  }
+  
+  .post-actions button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .post-actions button:first-child {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .post-actions button:last-child {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .post-actions button:hover {
+    opacity: 0.8;
+  }
+  
+  .comments {
+    margin-top: 20px; /* Espacio entre el contenido del post y los comentarios */
+    margin-bottom: 10px; /* Añadir espacio entre el post y los comentarios */
+  }
+  
+  .comment {
+    margin-bottom: 10px;
+  }
+  
+  .comments input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    color: white;
+    background-color: black;
+    margin-top: 10px; /* Espacio entre el campo de comentario y los botones */
+  }
+  

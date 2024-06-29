@@ -1,11 +1,12 @@
-import { React, useEffect } from 'react'
-import { Navbar } from "../Navbar/Navbar.jsx"
-import { useNavigate, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom"
+import { Navbar } from "../Navbar/Navbar"
+
 export const NavLayout = () => {
-    return (
-        <>
-            <Navbar />
-            <Outlet />
-        </>
-    )
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+    </>
+  )
 }
+
