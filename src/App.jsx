@@ -11,7 +11,7 @@ import { Solicitudes  } from "./Screens/Solicitudes/Solicitudes.jsx";
 
 export const App = () => {
   return (
-    <>
+
       <Routes>
         <Route path="/">
           <Route path="register" element={<Register />} />
@@ -25,6 +25,5 @@ export const App = () => {
           <Route path="solicitudes" element={<Solicitudes />} />
         </Route>
       </Routes>
-    </>
   );
 };

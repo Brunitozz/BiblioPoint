@@ -1,0 +1,24 @@
+.main-content {
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    position:relative;
+    left:750px;
+    top:170px
+  }
+  
+  .recommended-friends {
+    display: flex;
+    flex-wrap: wrap; /* Para que las tarjetas se alineen y salten a la siguiente línea si no hay espacio */
+    gap: 10px; /* Espacio entre las tarjetas */
+    margin-bottom: 20px;
+  }
+  
+  .posts {
+    margin-top: 20px;
+  }
+  

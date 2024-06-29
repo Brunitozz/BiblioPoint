@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Navbar } from '../../Components/Navbar/Navbar'
 import { AlertIcon } from '../../icons/AlertIcon'
 import { useNavigate, useParams } from 'react-router-dom'
 import { updateUser } from '../../services/user_service'
