@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function VerSolicitudes() {
+export const Solicitudes = () => {
   return (
     <div>VerSolicitudes</div>
   )

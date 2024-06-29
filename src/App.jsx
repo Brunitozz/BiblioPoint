@@ -1,36 +1,20 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useLocation,
-} from "react-router-dom";
-import Login from "./Screens/Login/Login.jsx";
-import Registro from "./Screens/Register/Register.jsx";
-import Navabar from "./Components/Navabar/Navabar.jsx";
+import { Route, Routes } from "react-router-dom";
+import { Login } from "./Screens/Login/Login.jsx";
+import { Register } from "./Screens/Register/Register.jsx";
+import { NavLayout } from './Components/NavLayout/NavLayout.jsx'
 // Importa otros componentes según sea necesario
 
-function App() {
-  return (
-    <Router>
-      <Navabar />
-      <Login />
-    </Router>
-  );
-}
-
-function Main() {
-  const location = useLocation();
-
+export const App = () => {
   return (
     <>
-      {location.pathname !== "/login" && location.pathname !== "/register" && <Navabar />}
       <Routes>
-        <Route path ="/register" element={<Registro />} />
-        <Route path="/login" element={<Login />} />
-        {/* Define otras rutas según sea necesario */}
+        <Route path='/' element={ <NavLayout /> } >
+          <Route path ="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
+          {/* Define otras rutas según sea necesario */}
+        </Route>
       </Routes>
     </>
   );
 }
-export default App;

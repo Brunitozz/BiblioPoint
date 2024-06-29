@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function PaginaLibro() {
+export const PaginaLibro = () => {
   return (
     <div>PaginaLibro</div>
   )

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function EditarPerfil() {
+export const EditarPerfil = () => {
   return (
     <div>EditarPerfil</div>
   )

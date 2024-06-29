@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function PerfilUsuario() {
+export const PerfilUsuario = () => {
   return (
     <div>PerfilUsuario</div>
   )

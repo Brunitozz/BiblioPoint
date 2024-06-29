@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function VerAmigos() {
+export const Amigos = () => {
   return (
     <div>VerAmigos</div>
   )

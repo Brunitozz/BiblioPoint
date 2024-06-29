@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function MainFeed() {
+export const MainFeed = () => {
   return (
     <div>MainFeed</div>
   )

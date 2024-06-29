@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "./Register.css";
 
-export default function Register() {
+export const Register = () => {
   const registerFormRef = useRef(null);
 
   useEffect(() => {

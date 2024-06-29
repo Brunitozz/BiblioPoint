@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Publicar() {
+export const Publicar = () => {
   return (
     <div>Publicar</div>
   )

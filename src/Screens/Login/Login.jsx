@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from "react";
+import { NavLink } from 'react-router-dom'
 import "./Login.css";
 
-export default function Login() {
+export const Login = () => {
   const loginFormRef = useRef(null);
 
   useEffect(() => {
@@ -99,9 +100,10 @@ export default function Login() {
       <div className="my-form__actions">
         <div className="my-form__row">
           <span>¿No tienes cuenta?</span>
-          <a href="#" title="Create Account">
-            Registrate
-          </a>
+          <NavLink to={'/main/register'}
+          >
+            Registrarse
+          </NavLink>
         </div>
       </div>
     </form>

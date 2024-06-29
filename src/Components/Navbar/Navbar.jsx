@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./Navabar.css";
 import logo from "../../assets/Bibliopoint-Logo.png";
 
-export default function Navabar() {
+export const Navbar = () => {
   /*useEffect(() => {
     const button = document.getElementById("avatar-navbar");
     const closeButton = document.querySelector(".close-button");
