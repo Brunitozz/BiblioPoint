@@ -9,8 +9,7 @@ import { Libros } from "./Screens/LibrosFavoritos/VerLibros.jsx";
 // Importa otros componentes según sea necesario
 
 export const App = () => {
-  return (
-
+  return (   
       <Routes>
         <Route path="/">
           <Route path="register" element={<Register />} />
