@@ -1,0 +1,86 @@
+/* src/Components/Navbar/Navbar.css */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    background-color: #333;
+    color: #fff;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    left: 0px;  /* Asegúrate de que se extienda a la izquierda */
+    right: 0px; /* Asegúrate de que se extienda a la derecha */
+  }
+  
+  
+  .navbar-section {
+    display: flex;
+    align-items: center;
+    
+  }
+  
+  .navbar-title {
+    margin-right: 100px; /* Espacio entre el título y el buscador */
+    
+  }
+  
+  .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+  }
+  
+  .search-input {
+    padding: 8px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    outline: none;
+    margin-right: 20px; /* Espacio entre el campo de búsqueda y el botón */ /* Permite que el campo de entrada crezca para ocupar el espacio disponible */
+    text-align: left;
+    flex-grow: 2;
+    max-width: 600px; /* Establece un ancho máximo */
+  }
+  
+  .search-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  }
+  
+  .search-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #e74c3c;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .search-button:hover {
+    background-color: #c0392b;
+  }
+  
+  .navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Espacio entre los enlaces */
+    margin: 0;
+    padding: 60px;
+ 
+  }
+  
+  .navbar-links li {
+    margin: 0;
+  }
+  
+  .navbar-links li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .navbar-links li a:hover {
+    text-decoration: underline;
+  }
+  

@@ -10,7 +10,7 @@ import { Libros } from "./Screens/LibrosFavoritos/VerLibros.jsx";
 
 export const App = () => {
   return (
-    <>
+    <div className="app">
       <Routes>
         <Route path="/">
           <Route path="register" element={<Register />} />
@@ -23,6 +23,6 @@ export const App = () => {
           {/* Define otras rutas según sea necesario */}
         </Route>
       </Routes>
-    </>
+    </div>
   );
 };
