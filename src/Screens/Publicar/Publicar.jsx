@@ -29,8 +29,6 @@ const ButtonOpenDialog = () => {
 
 export const Publicar = () => {
 
-
-
   return (
     <>
       <div>Post Dialog</div>
