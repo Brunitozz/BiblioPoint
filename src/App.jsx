@@ -28,7 +28,7 @@ export const App = () => {
         <Route path="post" element={<Publicar />} />
         {/* Define otras rutas según sea necesario */}
          <Route path="solicitudes" element={<Solicitudes />} />
-        </Route>
+        
       </Routes>
     </>
   );
