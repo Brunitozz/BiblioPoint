@@ -1,6 +1,6 @@
 import React from 'react';
 import './UserCard.css';
-import User from '../assets/User.png'
+import User from '../../assets/User.png';
 function UserCard({ name }) {
   return (
     <div className="user-card">

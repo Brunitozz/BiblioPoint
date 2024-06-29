@@ -1,5 +1,5 @@
 import React from 'react';
-import './Post/Post.css';
+import '../Post/Post.css';
 
 function Post({ id, author, content, likes, dislikes, comments }) {
   return (

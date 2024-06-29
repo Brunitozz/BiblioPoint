@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../MainFeed/MainFeed.css';
 import UserCard from '../UserCard/UserCard';
-import Post from '../Post/Post';
-import postsData from '../Data/Post.json'; // Importa el archivo JSON
+import Post from '../Post/Post.jsx';
+import postsData from '../../Data/Post.json'; // Importa el archivo JSON
 
 function MainContent() {
   const [posts, setPosts] = useState([]);

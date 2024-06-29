@@ -6,11 +6,16 @@ import { EditarPerfil } from "./Screens/EditarPerfil/EditarPerfil.jsx";
 import { Publicar } from "./Screens/Publicar/Publicar.jsx";
 import { Amigos } from "./Screens/Amigos/VerAmigos.jsx";
 import { Libros } from "./Screens/LibrosFavoritos/VerLibros.jsx";
+import {Navbar} from "./Components/Navbar/Navbar.jsx";
+import {MainFeed} from "./Screens/MainFeed/MainFeed.jsx";
 // Importa otros componentes según sea necesario
 
 export const App = () => {
   return (
     <div className="app">
+      <Navbar/>
+      <MainFeed/>
+
       <Routes>
         <Route path="/">
           <Route path="register" element={<Register />} />
