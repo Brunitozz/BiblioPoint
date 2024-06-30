@@ -1,56 +1,61 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
-import Post from "./Post";
+import { useParams } from "react-router-dom";
+import { useFetch } from "../../services/useFetch";
+import { CardPost } from "../PaginaLibro/components/CardPost";
 import HeaderUser from "./Header";
 import imageExample from "./icon-profile-example.jpg";
-import useUserPosts from "../../hooks/usePostsUser";
-import useUser from "../../hooks/useUserInfo";
-import { CardPost } from "../PaginaLibro/components/CardPost";
 
-export const PerfilUsuario = () => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const userId = searchParams.get("id");
+const PerfilUsuario = () => {
+  const { id } = useParams();
+  console.log(id);
+  const USER_API_URL = `http://127.0.0.1:5000/user/${id}`;
+  const POSTS_API_URL = `http://127.0.0.1:5000/posts/user?id=${id}`;
 
-  const { user, loading: loadingUser, error: errorUser } = useUser(userId);
   const {
-    posts,
-    loading: loadingPosts,
-    error: errorPosts,
-  } = useUserPosts(userId);
+    data: userData,
+    loading: userLoading,
+    error: userError,
+  } = useFetch(USER_API_URL);
+  const {
+    data: postsData,
+    loading: postsLoading,
+    error: postsError,
+  } = useFetch(POSTS_API_URL);
 
-  const User = user?.data;
-  const Posts = Array.isArray(posts?.data) ? posts.data : [];
-
-  if (loadingUser || loadingPosts) {
+  if (userLoading || postsLoading) {
     return <div>Loading...</div>;
   }
 
-  if (errorUser || errorPosts) {
-    return <div>Error: {errorUser || errorPosts}</div>;
+  if (userError || postsError) {
+    return <div>Error: {userError || postsError}</div>;
   }
 
-  if (!User) {
+  if (!userData || !userData.data) {
     return <div>No user found</div>;
   }
+
+  const { name, image } = userData.data;
+  console.log(userData);
+  const userPosts = Array.isArray(postsData?.data) ? postsData.data : [];
+  console.log(userPosts);
 
   return (
     <div className="w-full h-auto p-6 flex flex-col items-center gap-6 overflow-y-scroll">
       <div className="flex flex-col gap-6 w-96">
-        <HeaderUser name={User.name} image={User.image || imageExample} />
+        <HeaderUser name={name} image={image || imageExample} />
         <div className="text-xl font-bold">Publicaciones</div>
-        {Posts.length > 0 ? (
-          Posts.map((post, index) => (
+        {userPosts.length > 0 ? (
+          userPosts.map((post, index) => (
             <CardPost
               key={index}
               content={post.content}
               id={post.id_post}
-              name={User.name}
+              name={name}
               comments={post.comments}
             />
           ))
         ) : (
-          <div>No posts available</div>
+          <div>No hay posts disponibles</div>
         )}
       </div>
     </div>
