@@ -1,7 +1,7 @@
 .user-card {
     display: flex;
     align-items: center;
-    flex: 1 1 calc(25% - 10px); /* Ajusta el ancho de la tarjeta para que ocupe un cuarto del contenedor menos el espacio del gap */
+    flex: 1 1 calc(30% - 20px); /* Ajusta el ancho de la tarjeta para que ocupe un cuarto del contenedor menos el espacio del gap */
     border: 1px solid #ddd;
     padding: 15px;
     border-radius: 8px;
@@ -21,9 +21,9 @@
   }
   
   .user-card button {
-    padding: 8px 1px;
+    padding: 2px 2px;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     background-color: #007bff;
     color: white;
     cursor: pointer;

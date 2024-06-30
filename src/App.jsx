@@ -6,13 +6,15 @@ import { EditarPerfil } from "./Screens/EditarPerfil/EditarPerfil.jsx";
 import { Publicar } from "./Screens/Publicar/Publicar.jsx";
 import { Amigos } from "./Screens/Amigos/VerAmigos.jsx";
 import { Libros } from "./Screens/LibrosFavoritos/VerLibros.jsx";
+import MainFeed from "./Screens/MainFeed/MainFeed.jsx";
+import Navbar from "./Components/Navbar/Navbar.jsx";
 import { Solicitudes  } from "./Screens/Solicitudes/Solicitudes.jsx";
 import { PaginaLibro } from "./Screens/PaginaLibro/PaginaLibro.jsx"
 // Importa otros componentes según sea necesario
 
 export const App = () => {
   return (
-
+    <>
       <Routes>
         <Route path="/">
           <Route path="register" element={<Register />} />
@@ -27,5 +29,6 @@ export const App = () => {
           <Route path="libros/:idBook" element={<PaginaLibro />} />
         </Route>
       </Routes>
+    </>
   );
 };
