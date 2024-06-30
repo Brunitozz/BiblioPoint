@@ -20,13 +20,11 @@ export const Solicitudes = () => {
       prevS.filter((s) => s.id_friend !== id_friend)
     )
   }
-  
-  console.log(solicitudes)
 
   return (
-    <section className="items-center justify-center">
-      <h1 className="text-2xl font-bold text-center">Solicitudes</h1>
-      <div className="grid grid-cols-3 gap-6">
+    <section className="p-10 flex flex-col gap-4 w-full h-full">
+      <h1 className="text-3xl font-bold">Solicitudes</h1>
+      <div className="grid grid-cols-4 gap-6 place-items-center w-[1000px]">
         {solicitudes.map(({ id_friend, user, image}) => (
           <CardAmigo
             key={id_friend}

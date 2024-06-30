@@ -42,17 +42,22 @@ export const PaginaLibro = () => {
     <>
       <div className='flex items-center justify-center'>
        <main className="flex gap-4 w-[1000px]">
-         <div className="h-[500px] w-[40%px] rounded-lg bg-slate-500 overflow-hidden">
-           <img
-             src={url_img}
-             className="h-[500px] w-full object-cover"
-             alt={'image' + id_book}
-           />
+        <div className="h-[500px] w-[50%px] rounded-lg bg-slate-500 overflow-hidden">
+            <img
+              src={url_img}
+              className="h-[500px] w-full object-cover"
+              alt={'image' + id_book}
+            />
          </div>
-         <div className="h-[400px] w-[60%] bg-zinc-300 p-4 rounded-lg overflow-hidden flex flex-col gap-2">
-           <h1 className="text-3xl">Título: <span className="font-bold">{name_book}</span></h1>
-           <h1 className="text-xl">Autor: <span className="font-semibold" >{name_author}</span></h1>
-           <p className="font-medium text-sm italic">Sinopsis: <span className="not-italic text-ellipsis">{description}</span></p>
+         <div>
+          <div className="h-[400px] w-[50%] bg-zinc-300 p-4 rounded-lg overflow-hidden flex flex-col gap-2">
+            <h1 className="text-3xl">Título: <span className="font-bold">{name_book}</span></h1>
+            <h1 className="text-xl">Autor: <span className="font-semibold" >{name_author}</span></h1>
+            <p className="font-medium text-sm italic">Sinopsis: <span className="not-italic text-ellipsis">{description}</span></p>
+          </div>
+          <div>
+            Generos
+          </div>
          </div>
        </main>
       </div>

@@ -10,24 +10,22 @@ import MainFeed from "./Screens/MainFeed/MainFeed.jsx";
 import Navbar from "./Components/Navbar/Navbar.jsx";
 import { Solicitudes  } from "./Screens/Solicitudes/Solicitudes.jsx";
 import { PaginaLibro } from "./Screens/PaginaLibro/PaginaLibro.jsx"
+import { MainLayout } from "./Components/MainLayout/MainLayout.jsx";
+import { NavLayout } from "./Components/NavLayout/NavLayout.jsx";
 // Importa otros componentes según sea necesario
 
 export const App = () => {
   return (
     <>
-    <Navbar/>
       <Routes>
-        <Route path="/" element={<MainFeed />} />
-        <Route path="main" element={<MainFeed />} />
-        <Route path="register" element={<Register />} />
-        <Route path="login" element={<Login />} />
-        <Route path="edit-profile/:id" element={<EditarPerfil />} />
-        <Route path="amigos" element={<Amigos />} />
-        <Route path="libros" element={<Libros />} />
-        {/* NOTE: Ruta para probar el componente Publicar */}
-        <Route path="post" element={<Publicar />} />
-        {/* Define otras rutas según sea necesario */}
-         <Route path="solicitudes" element={<Solicitudes />} />
+        <Route path="/main" element={<MainLayout />}>
+          <Route path="solicitudes" element={<Solicitudes />} />
+          <Route path="libros/:idBook" element={<PaginaLibro />} />
+        </Route>
+        <Route path="/init" element={ <NavLayout />}>
+          <Route path="login" element={<Login />}/>
+          <Route path="register" element={<Register />}/>
+        </Route>
       </Routes>
     </>
   );
