@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../Post/Post.css';
 
 function Post({ id, author, content, likes, dislikes, comments }) {
+  const [newComment, setNewComment] = useState('');
+  const [commentList, setCommentList] = useState(comments);
+
+  const handleAddComment = () => {
+    if (newComment.trim() !== '') {
+      const updatedComments = [
+        ...commentList,
+        { author: 'Tú', text: newComment }
+      ];
+      setCommentList(updatedComments);
+      setNewComment('');
+    }
+  };
+
   return (
     <div className="post">
       <div className="post-header">
@@ -10,12 +24,20 @@ function Post({ id, author, content, likes, dislikes, comments }) {
       </div>
       <p>{content}</p>
       <div className="comments">
-        {comments.map((comment, index) => (
+        {commentList.map((comment, index) => (
           <div key={index} className="comment">
             <p><strong>{comment.author}:</strong> {comment.text}</p>
           </div>
         ))}
-        <input type="text" placeholder="Agregar un comentario" />
+        <div className="comment-input-container">
+          <input
+            type="text"
+            placeholder="Agregar un comentario"
+            value={newComment}
+            onChange={(e) => setNewComment(e.target.value)}
+          />
+          <button className="comment-button" onClick={handleAddComment}>Comentar</button>
+        </div>
       </div>
       <div className="post-actions">
         <button>👍 Like ({likes})</button>
