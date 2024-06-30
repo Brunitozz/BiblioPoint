@@ -1,24 +1,26 @@
 import React, { useEffect, useRef } from "react";
-
+import { register } from "../../services/auth_service";
 export const Register = () => {
   const registerFormRef = useRef(null);
 
   useEffect(() => {
     const registerForm = registerFormRef.current;
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
       e.preventDefault();
-      const nombre = document.getElementById("nombre");
-      const apellidos = document.getElementById("apellidos");
-      const edad = document.getElementById("edad");
-      const email = document.getElementById("email");
-      const password = document.getElementById("password");
+      const name = document.getElementById("nombre").value;
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
 
-      console.log("Nombre:", nombre.value);
-      console.log("Apellidos:", apellidos.value);
-      console.log("Edad:", edad.value);
-      console.log("Email:", email.value);
-      console.log("Password:", password.value);
+      try {
+        const response = await register(username, password, name); // Usa el servicio de registro
+        console.log("Registration successful:", response);
+        // Redirigir a otra página o actualizar el estado de la aplicación
+        window.location.href = '/init/login'; // Ejemplo de redirección al login después del registro
+      } catch (error) {
+        console.error("Registration failed:", error.message);
+        // Manejar errores de registro (mostrar mensajes al usuario, etc.)
+      }
     };
 
     if (registerForm) {
@@ -54,40 +56,14 @@ export const Register = () => {
         <div className="relative pt-4 mb-2">
           <input
             type="text"
-            id="apellidos"
-            name="apellidos"
+            id="username"
+            name="username"
             className="text-black text-lg p-2 w-full border-b-2 border-black bg-transparent outline-none placeholder-transparent focus:border-gray-700"
-            placeholder="Your Last Name"
+            placeholder="Your Username"
             required
           />
-          <label htmlFor="apellidos" className="absolute top-2 left-2 text-black transition-all duration-300 pointer-events-none">
-            Apellidos
-          </label>
-        </div>
-        <div className="relative pt-4 mb-2">
-          <input
-            type="number"
-            id="edad"
-            name="edad"
-            className="text-black text-lg p-2 w-full border-b-2 border-black bg-transparent outline-none placeholder-transparent focus:border-gray-700"
-            placeholder="Your Age"
-            required
-          />
-          <label htmlFor="edad" className="absolute top-2 left-2 text-black transition-all duration-300 pointer-events-none">
-            Edad
-          </label>
-        </div>
-        <div className="relative pt-4 mb-2">
-          <input
-            type="email"
-            id="email"
-            name="email"
-            className="text-black text-lg p-2 w-full border-b-2 border-black bg-transparent outline-none placeholder-transparent focus:border-gray-700"
-            placeholder="Your Email"
-            required
-          />
-          <label htmlFor="email" className="absolute top-2 left-2 text-black transition-all duration-300 pointer-events-none">
-            Correo
+          <label htmlFor="username" className="absolute top-2 left-2 text-black transition-all duration-300 pointer-events-none">
+            Usuario
           </label>
         </div>
         <div className="relative pt-4 mb-2">
@@ -96,8 +72,6 @@ export const Register = () => {
             type="password"
             className="text-black text-lg p-2 w-full border-b-2 border-black bg-transparent outline-none placeholder-transparent focus:border-gray-700"
             placeholder="Your Password"
-            title="Minimum 6 characters at least 1 Alphabet and 1 Number"
-            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
             required
           />
           <label htmlFor="password" className="absolute top-2 left-2 text-black transition-all duration-300 pointer-events-none">

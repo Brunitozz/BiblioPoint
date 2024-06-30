@@ -4,6 +4,7 @@ import UserCard from '../UserCard/UserCard';
 import Post from '../Post/Post.jsx';
 import postsData from '../../Data/Post.json'; // Importa el archivo JSON
 
+
 function MainContent() {
   const [posts, setPosts] = useState([]);
 
@@ -12,6 +13,7 @@ function MainContent() {
     setPosts(postsData);
   }, []);
 
+  
   return (
     <div className="w-full h-[820px] p-6 flex flex-col items-center gap-6 overflow-y-scroll">
       <div className="main-content">
