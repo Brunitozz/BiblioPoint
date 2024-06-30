@@ -12,6 +12,7 @@ import { Solicitudes } from "./Screens/Solicitudes/Solicitudes.jsx";
 import { PaginaLibro } from "./Screens/PaginaLibro/PaginaLibro.jsx";
 import { MainLayout } from "./Components/MainLayout/MainLayout.jsx";
 import { NavLayout } from "./Components/NavLayout/NavLayout.jsx";
+import PerfilUsuario from "./Screens/PerfilUsuario/PerfilUsuario.jsx";
 // Importa otros componentes según sea necesario
 
 export const App = () => {
@@ -22,6 +23,7 @@ export const App = () => {
           <Route path="solicitudes" element={<Solicitudes />} />
           <Route path="libros/:idBook" element={<PaginaLibro />} />
           <Route path="amigos" element={<Amigos />} />
+          <Route path="perfil" element={<PerfilUsuario />} />
         </Route>
         <Route path="/init" element={<NavLayout />}>
           <Route path="login" element={<Login />} />

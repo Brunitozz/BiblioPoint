@@ -10,6 +10,7 @@ const Amigos = () => {
   const id = queryParams.get("id");
 
   const { friends, loading, error } = useFriends(id);
+  console.log(friends);
 
   return (
     <div className="p-6">
