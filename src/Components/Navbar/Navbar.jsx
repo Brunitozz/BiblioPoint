@@ -12,8 +12,8 @@ export default function Navbar() {
       </div>
       <ul className="navbar-links">
         <li><a href="/main">Inicio</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/register">Registro</a></li>
+        <li><a href="/init/login">Login</a></li>
+        <li><a href="/init/register">Registro</a></li>
       </ul>
     </nav>
   );
