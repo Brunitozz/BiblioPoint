@@ -7,39 +7,19 @@ import { getPosts } from "../../services/post_service.js";
 
 function MainContent() {
   const [posts, setPosts] = useState([]);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      const token = localStorage.getItem('token'); // Lee el token desde localStorage
-
-      if (!token) {
-        setError("No token found, please log in.");
-        return;
-      }
-
-      try {
-        const data = await getPosts(token); // Usa el servicio de posts
-        setPosts(data);
-      } catch (error) {
-        setError(error.message);
-      }
-    };
-
-    fetchPosts();
+    // Carga los datos de los posts desde el archivo JSON
+    setPosts(postsData);
   }, []);
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
 
   return (
     <div className="w-full h-[820px] flex-wrap p-6 flex flex-col items-center gap-6 overflow-y-scroll">
       <div className="main-content">
         <div className="recommended-friends">
-          <UserCard name="John Doe" />
-          <UserCard name="Jane Smith" />
-          <UserCard name="Alice Johnson" />
+          <UserCard name="Kiltom Adolfo" />
+          <UserCard name="Bruno Pumapillo" />
+          <UserCard name="Brayan Alejandro" />
           <UserCard name="Bob Brown" />
           <UserCard name="Bob Brown" />
           <UserCard name="Bob Brown" />

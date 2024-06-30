@@ -14,15 +14,14 @@ export const Login = () => {
       const password = document.getElementById("password").value;
 
       try {
-        const response = await login(username, password); // Usa el servicio de autenticación
+        const response = await login(username, password); 
         console.log("Login successful:", response);
         localStorage.setItem('token', response.access_token);
-        console.log("Token added to localStorage:", response.access_token); // Mensaje de confirmación
-        // Redirigir a otra página o actualizar el estado de la aplicación
-        window.location.href = '/main/feed'; // Redirige al feed principal
+        console.log("Token added to localStorage:", response.access_token); 
+        window.location.href = '/main/feed'; 
       } catch (error) {
         console.error("Login failed:", error.message);
-        // Manejar errores de login (mostrar mensajes al usuario, etc.)
+      
       }
     };
 
