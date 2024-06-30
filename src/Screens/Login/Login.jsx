@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 export const Login = () => {
   const loginFormRef = useRef(null);
@@ -30,7 +30,10 @@ export const Login = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <form className="flex flex-col justify-start relative gap-4 bg-white w-full max-w-xl p-8 rounded-2xl shadow-lg" ref={loginFormRef}>
+      <form
+        className="flex flex-col justify-start relative gap-4 bg-white w-full max-w-xl p-8 rounded-2xl shadow-lg"
+        ref={loginFormRef}
+      >
         <div className="mb-4 text-center">
           <h1 className="text-2xl font-semibold text-black">Iniciar Sesión</h1>
         </div>
@@ -43,7 +46,10 @@ export const Login = () => {
             placeholder="Your Email"
             required
           />
-          <label htmlFor="email" className="absolute top-2 left-2 text-black transition-all duration-300 pointer-events-none">
+          <label
+            htmlFor="email"
+            className="absolute top-2 left-2 text-black transition-all duration-300 pointer-events-none"
+          >
             Usuario o Correo:
           </label>
           <svg
@@ -71,7 +77,10 @@ export const Login = () => {
             pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
             required
           />
-          <label htmlFor="password" className="absolute top-2 left-2 text-black transition-all duration-300 pointer-events-none">
+          <label
+            htmlFor="password"
+            className="absolute top-2 left-2 text-black transition-all duration-300 pointer-events-none"
+          >
             Contraseña
           </label>
           <svg
@@ -90,13 +99,16 @@ export const Login = () => {
             <path d="M8 11v-4a4 4 0 1 1 8 0v4" />
           </svg>
         </div>
-        <button type="submit" className="bg-black text-white font-bold py-3 w-full rounded-full mt-4 hover:bg-gray-800">
+        <button
+          type="submit"
+          className="bg-black text-white font-bold py-3 w-full rounded-full mt-4 hover:bg-gray-800"
+        >
           Iniciar
         </button>
         <div className="flex flex-col items-center text-black gap-4 mt-2">
           <div className="flex gap-2 justify-between w-full">
             <span>¿No tienes cuenta?</span>
-            <NavLink to={'/register'} className="font-semibold hover:underline">
+            <NavLink to={"/register"} className="font-semibold hover:underline">
               Registrarse
             </NavLink>
           </div>
@@ -104,4 +116,4 @@ export const Login = () => {
       </form>
     </div>
   );
-}
+};

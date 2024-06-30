@@ -8,14 +8,15 @@ import { Amigos } from "./Screens/Amigos/VerAmigos.jsx";
 import { Libros } from "./Screens/LibrosFavoritos/VerLibros.jsx";
 import MainFeed from "./Screens/MainFeed/MainFeed.jsx";
 import Navbar from "./Components/Navbar/Navbar.jsx";
-import { Solicitudes  } from "./Screens/Solicitudes/Solicitudes.jsx";
-import { PaginaLibro } from "./Screens/PaginaLibro/PaginaLibro.jsx"
+import { Solicitudes } from "./Screens/Solicitudes/Solicitudes.jsx";
+import { PaginaLibro } from "./Screens/PaginaLibro/PaginaLibro.jsx";
+import { PerfilUsuario } from "./Screens/PerfilUsuario/PerfilUsuario.jsx";
 // Importa otros componentes según sea necesario
 
 export const App = () => {
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <Routes>
         <Route path="/" element={<MainFeed />} />
         <Route path="main" element={<MainFeed />} />
@@ -27,7 +28,10 @@ export const App = () => {
         {/* NOTE: Ruta para probar el componente Publicar */}
         <Route path="post" element={<Publicar />} />
         {/* Define otras rutas según sea necesario */}
-         <Route path="solicitudes" element={<Solicitudes />} />
+        <Route path="solicitudes" element={<Solicitudes />} />
+        <Route path="perfil" element={<PerfilUsuario />} />
+        <Route path="book/:idBook" element={<PaginaLibro />} />
+        <Route path="post" element={<Publicar />} />
       </Routes>
     </>
   );
