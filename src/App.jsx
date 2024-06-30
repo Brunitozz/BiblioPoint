@@ -9,14 +9,13 @@ import { Libros } from "./Screens/LibrosFavoritos/VerLibros.jsx";
 import MainFeed from "./Screens/MainFeed/MainFeed.jsx";
 import Navbar from "./Components/Navbar/Navbar.jsx";
 import { Solicitudes  } from "./Screens/Solicitudes/Solicitudes.jsx";
+import { PaginaLibro } from "./Screens/PaginaLibro/PaginaLibro.jsx"
 // Importa otros componentes según sea necesario
 
 export const App = () => {
   return (
     <>
-      <Navbar />
       <Routes>
-
         <Route path="/" element={<MainFeed />} />
         <Route path="main" element={<MainFeed />} />
         <Route path="register" element={<Register />} />
@@ -28,7 +27,6 @@ export const App = () => {
         <Route path="post" element={<Publicar />} />
         {/* Define otras rutas según sea necesario */}
          <Route path="solicitudes" element={<Solicitudes />} />
-        
       </Routes>
     </>
   );

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import defaultImage from "../../assets/screen-0.jpg";
 import { CardAmigo } from './components/CardAmigo';
-import { useFetch } from './../../services/request_friend'
+import { useFetch } from '../../services/useFetch'
 
 
 export const Solicitudes = () => {

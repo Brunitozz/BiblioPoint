@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useFetch } from "../../../services/request_friend"
+import { useFetch } from "../../../services/useFetch"
 
 export const CardAmigo = ({ id_friend, image, name, onDelete }) => {
   const [apiUrl, setApiUrl] = useState('')
