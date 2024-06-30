@@ -18,6 +18,9 @@ const HeaderUser = ({ name, image, userId }) => {
       id_receiver: userId, // Este sería el ID del usuario cuyo perfil se está mostrando
     };
 
+    console.log("id_applicant:", requestData.id_applicant);
+    console.log("id_receiver:", requestData.id_receiver);
+
     const options = {
       method: "POST",
       headers: {
@@ -52,19 +55,21 @@ const HeaderUser = ({ name, image, userId }) => {
             className="rounded-full h-40 w-40 border-gray-700 border-8"
           />
         </div>
-        <div className="flex text-2xl font-bold flex-col justify-end flex-1">
-          <div className="">{name}</div>
-        </div>
-        <div className="flex flex-col justify-end text-center flex-1">
-          <button
-            className="bg-slate-600 rounded-lg"
-            onClick={handleAddFriend}
-            disabled={loading}
-          >
-            {loading ? "Enviando solicitud..." : "Agregar a amigos"}
-          </button>
-          {error && <p>Error: {error}</p>}
-          {success && <p>Solicitud enviada correctamente</p>}
+        <div className="flex flex-col gap-14">
+          <div className="flex text-2xl font-bold flex-col justify-end flex-1">
+            <div className="">{name}</div>
+          </div>
+          <div className="flex flex-col items-center text-center flex-1">
+            <button
+              className="bg-slate-600 rounded-lg h-16 w-28"
+              onClick={handleAddFriend}
+              disabled={loading}
+            >
+              {loading ? "Enviando solicitud..." : "Agregar a amigos"}
+            </button>
+            {error && <p>Error: {error}</p>}
+            {success && <p>Solicitud enviada correctamente</p>}
+          </div>
         </div>
       </div>
     </div>

@@ -40,9 +40,9 @@ const PerfilUsuario = () => {
   console.log(userPosts);
 
   return (
-    <div className="w-full h-auto p-6 flex flex-col items-center gap-6 overflow-y-scroll">
-      <div className="flex flex-col gap-6 w-96">
-        <HeaderUser name={name} image={image || imageExample} />
+    <div className="w-full h-[840px] p-6 flex flex-col items-center gap-6 overflow-y-scroll">
+      <div className="flex flex-col gap-6 w-full">
+        <HeaderUser name={name} userId={id} image={image || imageExample} />
         <div className="text-xl font-bold">Publicaciones</div>
         {userPosts.length > 0 ? (
           userPosts.map((post, index) => (
