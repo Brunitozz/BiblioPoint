@@ -20,10 +20,12 @@ export const App = () => {
     <>
       <Routes>
         <Route path="/main" element={<MainLayout />}>
+          <Route path="feed" element={<MainFeed />} />
           <Route path="solicitudes" element={<Solicitudes />} />
           <Route path="libros/:idBook" element={<PaginaLibro />} />
           <Route path="amigos" element={<Amigos />} />
           <Route path="perfil" element={<PerfilUsuario />} />
+          <Route path="feed" element={<MainFeed />} />
         </Route>
         <Route path="/init" element={<NavLayout />}>
           <Route path="login" element={<Login />} />

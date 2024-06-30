@@ -13,27 +13,29 @@ function MainContent() {
   }, []);
 
   return (
-    <div className="main-content">
-      <div className="recommended-friends">
-        <UserCard name="John Doe" />
-        <UserCard name="Jane Smith" />
-        <UserCard name="Alice Johnson" />
-        <UserCard name="Bob Brown" />
-        <UserCard name="Bob Brown" />
-        <UserCard name="Bob Brown" />
-      </div>
-      <div className="posts">
-        {posts.map(post => (
-          <Post
-            key={post.id}
-            id={post.id}
-            author={post.author}
-            content={post.content}
-            likes={post.likes}
-            dislikes={post.dislikes}
-            comments={post.comments}
-          />
-        ))}
+    <div className="w-full h-[820px] p-6 flex flex-col items-center gap-6 overflow-y-scroll">
+      <div className="main-content">
+        <div className="recommended-friends">
+          <UserCard name="John Doe" />
+          <UserCard name="Jane Smith" />
+          <UserCard name="Alice Johnson" />
+          <UserCard name="Bob Brown" />
+          <UserCard name="Bob Brown" />
+          <UserCard name="Bob Brown" />
+        </div>
+        <div className="posts">
+          {posts.map(post => (
+            <Post
+              key={post.id}
+              id={post.id}
+              author={post.author}
+              content={post.content}
+              likes={post.likes}
+              dislikes={post.dislikes}
+              comments={post.comments}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
