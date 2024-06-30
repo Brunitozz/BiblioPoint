@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import '../MainFeed/MainFeed.css';
-import UserCard from '../UserCard/UserCard';
-import Post from '../Post/Post.jsx';
-import postsData from '../../Data/Post.json'; // Importa el archivo JSON
+import React, { useState, useEffect } from "react";
+import "../MainFeed/MainFeed.css";
+import UserCard from "../UserCard/UserCard";
+import Post from "../Post/Post.jsx";
+import postsData from "../../Data/Post.json"; // Importa el archivo JSON
 
 
 function MainContent() {
@@ -15,7 +15,7 @@ function MainContent() {
 
   
   return (
-    <div className="w-full h-[820px] p-6 flex flex-col items-center gap-6 overflow-y-scroll">
+    <div className="w-full h-[820px] flex-wrap p-6 flex flex-col items-center gap-6 overflow-y-scroll">
       <div className="main-content">
         <div className="recommended-friends">
           <UserCard name="John Doe" />
@@ -26,7 +26,7 @@ function MainContent() {
           <UserCard name="Bob Brown" />
         </div>
         <div className="posts">
-          {posts.map(post => (
+          {posts.map((post) => (
             <Post
               key={post.id}
               id={post.id}
