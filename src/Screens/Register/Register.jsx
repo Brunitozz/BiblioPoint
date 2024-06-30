@@ -110,4 +110,4 @@ export const Register = () => {
       </form>
     </div>
   );
-}
+};
