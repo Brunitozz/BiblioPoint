@@ -66,32 +66,40 @@
 .comment {
   margin-bottom: 10px;
 }
+
 .comment-input-container {
   display: flex;
   gap: 10px; /* Espacio entre el input y el botón */
   align-items: center;
+  width: 100%;
 }
+
 .comments input {
-  flex-grow: 4;
+  flex-grow: 4; /* Aumenta el valor de flex-grow para que el input ocupe más espacio */
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
   outline: none;
   color: white;
   background-color: black;
-  margin-top: 10px; /* Espacio entre el campo de comentario y los botones */
 }
 
 .comment-button {
+  flex-grow: 1; /* Menor valor de flex-grow para el botón */
   padding: 8px 12px;
   border: none;
   border-radius: 4px;
   background-color: #007bff;
   color: white;
   cursor: pointer;
-  margin-top: 10px; /* Espacio entre el input y el botón */
 }
 
 .comment-button:hover {
   opacity: 0.8;
 }
+.separator {
+  border: none;
+  border-top: 2px solid #ddd; /* Estilo del separador */
+  margin: 1px 0px; /* Espaciado alrededor del separador */
+}
+

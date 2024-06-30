@@ -22,13 +22,16 @@ function Post({ id, author, content, likes, dislikes, comments }) {
         <p className="post-id">ID: {id}</p>
         <p className="post-author">Autor: {author}</p>
       </div>
+      
       <p>{content}</p>
+      <hr className="separator" /> {/* Añadir separador aquí */}
       <div className="comments">
         {commentList.map((comment, index) => (
           <div key={index} className="comment">
             <p><strong>{comment.author}:</strong> {comment.text}</p>
           </div>
         ))}
+        
         <div className="comment-input-container">
           <input
             type="text"
