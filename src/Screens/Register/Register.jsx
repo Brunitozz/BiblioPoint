@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import "./Register.css";
 
 export const Register = () => {
   const registerFormRef = useRef(null);
@@ -109,4 +108,4 @@ export const Register = () => {
       </button>
     </form>
   );
-}
+};
