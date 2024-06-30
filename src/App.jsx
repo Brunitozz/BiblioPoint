@@ -15,6 +15,7 @@ import { PaginaLibro } from "./Screens/PaginaLibro/PaginaLibro.jsx"
 export const App = () => {
   return (
     <>
+    <Navbar/>
       <Routes>
         <Route path="/" element={<MainFeed />} />
         <Route path="main" element={<MainFeed />} />
