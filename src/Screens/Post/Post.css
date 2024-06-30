@@ -1,80 +1,105 @@
 .post {
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    background-color: #7a6b6b;
-    transition: transform 0.2s;
-  }
-  
-  .post:hover {
-    transform: scale(1.02);
-  }
-  
-  .post-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  
-  .post-id {
-    font-weight: bold;
-  }
-  
-  .post-author {
-    font-style: italic;
-  }
-  
-  .post p {
-    margin: 0 0 10px;
-  }
-  
-  .post-actions {
-    margin-top: 10px;
-    display: flex;
-    gap: 10px; /* Espacio entre los botones */
-    justify-content: flex-start;
-  }
-  
-  .post-actions button {
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .post-actions button:first-child {
-    background-color: #28a745;
-    color: white;
-  }
-  
-  .post-actions button:last-child {
-    background-color: #dc3545;
-    color: white;
-  }
-  
-  .post-actions button:hover {
-    opacity: 0.8;
-  }
-  
-  .comments {
-    margin-top: 20px; /* Espacio entre el contenido del post y los comentarios */
-    margin-bottom: 10px; /* Añadir espacio entre el post y los comentarios */
-  }
-  
-  .comment {
-    margin-bottom: 10px;
-  }
-  
-  .comments input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    outline: none;
-    color: white;
-    background-color: black;
-    margin-top: 10px; /* Espacio entre el campo de comentario y los botones */
-  }
-  
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #7a6b6b;
+  transition: transform 0.2s;
+}
+
+.post:hover {
+  transform: scale(1.02);
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.post-id {
+  font-weight: bold;
+}
+
+.post-author {
+  font-style: italic;
+}
+
+.post p {
+  margin: 0 0 10px;
+}
+
+.post-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px; /* Espacio entre los botones */
+  justify-content: flex-start;
+}
+
+.post-actions button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.post-actions button:first-child {
+  background-color: #28a745;
+  color: white;
+}
+
+.post-actions button:last-child {
+  background-color: #dc3545;
+  color: white;
+}
+
+.post-actions button:hover {
+  opacity: 0.8;
+}
+
+.comments {
+  margin-top: 20px; /* Espacio entre el contenido del post y los comentarios */
+  margin-bottom: 10px; /* Añadir espacio entre el post y los comentarios */
+}
+
+.comment {
+  margin-bottom: 10px;
+}
+
+.comment-input-container {
+  display: flex;
+  gap: 10px; /* Espacio entre el input y el botón */
+  align-items: center;
+  width: 100%;
+}
+
+.comments input {
+  flex-grow: 4; /* Aumenta el valor de flex-grow para que el input ocupe más espacio */
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+  color: white;
+  background-color: black;
+}
+
+.comment-button {
+  flex-grow: 1; /* Menor valor de flex-grow para el botón */
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.comment-button:hover {
+  opacity: 0.8;
+}
+.separator {
+  border: none;
+  border-top: 2px solid #ddd; /* Estilo del separador */
+  margin: 1px 0px; /* Espaciado alrededor del separador */
+}
+

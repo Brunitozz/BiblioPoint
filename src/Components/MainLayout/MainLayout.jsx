@@ -5,7 +5,7 @@ import { SideBarCuenta } from "../SideBar/SideBar";
 export const MainLayout = () => {
   return (
     <div className="flex flex-col h-screen w-screen">
-      <div className="h-[143px]">
+      <div className="h-[120px]">
         <Navbar />
       </div>
       <div className="h-auto flex-1 flex">

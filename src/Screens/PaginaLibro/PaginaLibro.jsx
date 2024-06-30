@@ -41,7 +41,7 @@ export const PaginaLibro = () => {
 
   return (
     <>
-      <div className="w-full h-[820px] p-6 flex flex-col items-center gap-6 overflow-y-scroll">
+      <div className="w-full h-[840px] p-6 flex flex-col items-center gap-6 overflow-y-scroll">
         <main className="flex gap-4 w-[1000px] h-[470px]">
           <div className="w-[300px] h-[470px] overflow-hidden rounded-lg shadow-xl">
             <img
