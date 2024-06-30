@@ -12,7 +12,7 @@ export const MainLayout = () => {
         <div className="w-64 border-r-2 border-black">
           <SideBarCuenta />
         </div>
-        <div className="flex-1">
+        <div className="flex-1 overflow-auto">
           <Outlet />
         </div>
       </div>

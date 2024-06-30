@@ -21,6 +21,7 @@ export const App = () => {
         <Route path="/main" element={<MainLayout />}>
           <Route path="solicitudes" element={<Solicitudes />} />
           <Route path="libros/:idBook" element={<PaginaLibro />} />
+          <Route path="feed" element={<MainFeed />} />
         </Route>
         <Route path="/init" element={ <NavLayout />}>
           <Route path="login" element={<Login />}/>

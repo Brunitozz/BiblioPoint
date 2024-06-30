@@ -6,8 +6,8 @@
     padding: 0px 20px;
     background-color: #333;
     color: #000000;
-    width: 100%;
     position: fixed;
+    width: 100%;
     top: 0;
     z-index: 1000;
     left: 0px;  
