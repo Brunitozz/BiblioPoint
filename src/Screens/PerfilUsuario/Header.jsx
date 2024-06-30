@@ -11,7 +11,7 @@ export const HeaderUser = ({ name, image }) => {
             className="rounded-full h-40 w-40 border-gray-700 border-8"
           />
         </div>
-        <div className="flex flex-col justify-end flex-1">
+        <div className="flex text-2xl font-bold flex-col justify-end flex-1">
           <div className="">{name}</div>
         </div>
         <div className="flex flex-col justify-end text-center flex-1">

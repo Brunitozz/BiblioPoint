@@ -5,6 +5,7 @@ import HeaderUser from "./Header";
 import imageExample from "./icon-profile-example.jpg";
 import useUserPosts from "../../hooks/usePostsUser";
 import useUser from "../../hooks/useUserInfo";
+import { CardPost } from "../PaginaLibro/components/CardPost";
 
 export const PerfilUsuario = () => {
   const location = useLocation();
@@ -34,19 +35,18 @@ export const PerfilUsuario = () => {
   }
 
   return (
-    <div className="p-6 flex flex-1 justify-center mt-48">
+    <div className="w-full h-auto p-6 flex flex-col items-center gap-6 overflow-y-scroll">
       <div className="flex flex-col gap-6 w-96">
         <HeaderUser name={User.name} image={User.image || imageExample} />
         <div className="text-xl font-bold">Publicaciones</div>
         {Posts.length > 0 ? (
           Posts.map((post, index) => (
-            <Post
+            <CardPost
               key={index}
-              id={post.id_post}
-              author={post.id_user_post}
               content={post.content}
-              likes={post.likes || 0}
-              dislikes={post.dislikes || 0}
+              id={post.id_post}
+              name={User.name}
+              comments={post.comments}
             />
           ))
         ) : (

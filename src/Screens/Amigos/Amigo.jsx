@@ -2,7 +2,7 @@ import React from "react";
 
 const Amigo = ({ name, id_user, image }) => {
   const handleClick = () => {
-    window.location.href = `http://localhost:5173/main/amigos?id=${id_user}`;
+    window.location.href = `http://localhost:5173/main/perfil?id=${id_user}`;
   };
 
   return (
