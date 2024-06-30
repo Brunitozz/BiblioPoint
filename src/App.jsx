@@ -7,6 +7,7 @@ import { Publicar } from "./Screens/Publicar/Publicar.jsx";
 import { Amigos } from "./Screens/Amigos/VerAmigos.jsx";
 import { Libros } from "./Screens/LibrosFavoritos/VerLibros.jsx";
 import { Solicitudes  } from "./Screens/Solicitudes/Solicitudes.jsx";
+import { PaginaLibro } from "./Screens/PaginaLibro/PaginaLibro.jsx"
 // Importa otros componentes según sea necesario
 
 export const App = () => {
@@ -23,6 +24,7 @@ export const App = () => {
           <Route path="post" element={<Publicar />} />
           {/* Define otras rutas según sea necesario */}
           <Route path="solicitudes" element={<Solicitudes />} />
+          <Route path="libros/:idBook" element={<PaginaLibro />} />
         </Route>
       </Routes>
   );
