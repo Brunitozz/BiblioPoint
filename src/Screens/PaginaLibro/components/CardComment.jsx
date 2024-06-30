@@ -1,6 +1,6 @@
 import defatulImg from './../../../assets/screen-0.jpg'
 
-export const CardComment = () => {
+export const CardComment = ({ comment, idComment, name}) => {
   return (
     <>
       <section>
@@ -9,8 +9,8 @@ export const CardComment = () => {
               <img src={defatulImg} alt="" />
             </div>
             <div className="flex flex-col">
-              <h1 className="font-bold">Nombres Apellidos</h1>
-              <p>Este es un comentario hecho sin ganas porque tengo sueño</p>
+              <h1 className="font-bold">{ name }</h1>
+              <p>{ comment }</p>
             </div>
           </div>
       </section>
