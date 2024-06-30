@@ -14,21 +14,19 @@ import { Solicitudes  } from "./Screens/Solicitudes/Solicitudes.jsx";
 export const App = () => {
   return (
     <>
-      <Navbar />
-      <Routes>
-
-        <Route path="/" element={<MainFeed />} />
-        <Route path="main" element={<MainFeed />} />
-        <Route path="register" element={<Register />} />
-        <Route path="login" element={<Login />} />
-        <Route path="edit-profile/:id" element={<EditarPerfil />} />
-        <Route path="amigos" element={<Amigos />} />
-        <Route path="libros" element={<Libros />} />
-        {/* NOTE: Ruta para probar el componente Publicar */}
-        <Route path="post" element={<Publicar />} />
-        {/* Define otras rutas según sea necesario */}
-         <Route path="solicitudes" element={<Solicitudes />} />
-      </Routes>
+          <Routes>
+            <Route path="/">
+              <Route path="register" element={<Register />} />
+              <Route path="login" element={<Login />} />
+              <Route path="edit-profile/:id" element={<EditarPerfil />} />
+              <Route path="amigos" element={<Amigos />} />
+              <Route path="libros" element={<Libros />} />
+              {/* NOTE: Ruta para probar el componente Publicar */}
+              <Route path="post" element={<Publicar />} />
+              {/* Define otras rutas según sea necesario */}
+            </Route>
+          </Routes>
     </>
+
   );
 };
