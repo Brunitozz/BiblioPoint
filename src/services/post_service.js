@@ -1,7 +1,6 @@
 import { api } from "../constants/api";
 
-const api_post = `${api}/post`
-
+const api_post = `${api}/post`;
 
 const postPost = async (data) => {
   try {
@@ -14,12 +13,34 @@ const postPost = async (data) => {
     });
     const res = await response.json();
     if (res.error) {
-      return false
+      return false;
     }
-    return true
+    return true;
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
-}
+};
 
-export { postPost }
+const getPosts = async (token) => {
+  try {
+    const response = await fetch(`${api}/feed`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch posts");
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+export { postPost, getPosts };

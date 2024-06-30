@@ -1,25 +1,26 @@
 import { api } from "../constants/api";
 
 const login = async (username, password) => {
-  try {
-    const response = await fetch(`${api}/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ username, password })
-    });
-    const data = await response.json();
-    if (data.error) {
-      throw new Error(data.error);
+    try {
+      const response = await fetch(`${api}/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+      });
+      const data = await response.json();
+      if (data.error) {
+        throw new Error(data.error);
+      }
+      return data;
+    } catch (error) {
+      console.error(error);
+      throw error;
     }
-    return data;
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
-};
-const register = async (username, password, name) => {
+  };
+  
+  const register = async (username, password, name) => {
     try {
       const response = await fetch(`${api}/user`, {
         method: 'POST',
@@ -38,4 +39,5 @@ const register = async (username, password, name) => {
       throw error;
     }
   };
-export { login,register };
+  
+  export { login, register };

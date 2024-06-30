@@ -17,8 +17,9 @@ export const Login = () => {
         const response = await login(username, password); // Usa el servicio de autenticación
         console.log("Login successful:", response);
         localStorage.setItem('token', response.access_token);
+        console.log("Token added to localStorage:", response.access_token); // Mensaje de confirmación
         // Redirigir a otra página o actualizar el estado de la aplicación
-        window.location.href = '/dashboard'; // Ejemplo de redirección
+        window.location.href = '/main/feed'; // Redirige al feed principal
       } catch (error) {
         console.error("Login failed:", error.message);
         // Manejar errores de login (mostrar mensajes al usuario, etc.)

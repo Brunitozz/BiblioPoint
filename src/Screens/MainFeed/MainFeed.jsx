@@ -3,17 +3,36 @@ import "../MainFeed/MainFeed.css";
 import UserCard from "../UserCard/UserCard";
 import Post from "../Post/Post.jsx";
 import postsData from "../../Data/Post.json"; // Importa el archivo JSON
-
+import { getPosts } from "../../services/post_service.js";
 
 function MainContent() {
   const [posts, setPosts] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Carga los datos de los mocks
-    setPosts(postsData);
+    const fetchPosts = async () => {
+      const token = localStorage.getItem('token'); // Lee el token desde localStorage
+
+      if (!token) {
+        setError("No token found, please log in.");
+        return;
+      }
+
+      try {
+        const data = await getPosts(token); // Usa el servicio de posts
+        setPosts(data);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchPosts();
   }, []);
 
-  
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <div className="w-full h-[820px] flex-wrap p-6 flex flex-col items-center gap-6 overflow-y-scroll">
       <div className="main-content">
