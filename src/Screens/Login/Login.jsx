@@ -18,6 +18,7 @@ export const Login = () => {
         console.log("Login successful:", response);
         localStorage.setItem('token', response.access_token)
         localStorage.setItem('id_user', response.id_user)
+        localStorage.setItem('name', response.name)
         console.log("Token added to localStorage:", response.access_token); 
         window.location.href = '/main/feed'
       } catch (error) {

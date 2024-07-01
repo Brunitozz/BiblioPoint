@@ -1,6 +1,6 @@
 import React from "react";
 
-const Libro = ({ name, image, author }) => {
+export const Libro = ({ name, image, author }) => {
   const handleClick = () => {
     window.location.href = "http://localhost:5173/libros"; //#TODO colocar url de la pag del libro
   };
@@ -18,5 +18,3 @@ const Libro = ({ name, image, author }) => {
     </div>
   );
 };
-
-export default Libro;

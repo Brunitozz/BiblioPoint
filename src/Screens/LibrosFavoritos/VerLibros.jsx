@@ -1,5 +1,5 @@
 import React from "react";
-import Libro from "./Libro";
+import { Libro } from "./Libro";
 import defaultImage from "../../icons/default-book-icon.png";
 
 const books = [
@@ -28,5 +28,3 @@ export const Libros = () => {
     </div>
   );
 };
-
-export default Libros;

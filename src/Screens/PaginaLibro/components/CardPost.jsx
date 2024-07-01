@@ -1,6 +1,6 @@
 import defatulImg from "./../../../assets/screen-0.jpg";
 import { CardComment } from "./CardComment";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { postComment } from "./../../../services/comment_service";
 
 const ButtonOpenDialog = ({ dialogRef }) => {
@@ -23,21 +23,31 @@ const ButtonOpenDialog = ({ dialogRef }) => {
 
 const Comentar = ({ dialogRef, idPost, onAddComment }) => {
   const [comment, setComment] = useState("");
+  const [idUser, setIdUser] = useState(null)
+  const [name, setName] = useState(null)
+
+  useEffect(() => {
+    const userId = localStorage.getItem("id_user")
+    const name = localStorage.getItem("name")
+    setIdUser(userId)
+    setName(name)
+  }, [])
+
   const handleComment = async (e) => {
     e.preventDefault();
     // id_user de localStorage y nombre
     const response = await postComment({
-      id_user_comment: 3,
+      id_user_comment: idUser,
       id_post: idPost,
       comment,
     });
     if (response) {
       alert("Respuesta Publicada");
       onAddComment({
-        id_user_comment: 3,
+        id_user_comment: idUser,
         id_post: idPost,
         comment,
-        name: "Nombres, Apellidos",
+        name: name,
       });
       dialogRef.current.close();
     } else {

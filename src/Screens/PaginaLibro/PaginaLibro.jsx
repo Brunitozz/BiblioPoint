@@ -95,9 +95,9 @@ export const PaginaLibro = () => {
           <h1 className="font-semibold text-2xl">Publicaciones</h1>
           <div className="w-full flex flex-col h-auto p-6 gap-4">
             {
-              posts.map(({ id_post, name, content, comments }) => (
+              posts.map(({ id_post, name, content, comments }, index) => (
                 <CardPost
-                  key={id_post}
+                  key={index}
                   id={id_post}
                   name={name}
                   content={content}
