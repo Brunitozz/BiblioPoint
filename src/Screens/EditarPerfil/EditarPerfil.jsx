@@ -20,7 +20,7 @@ const ItemInput = ({ handleChange, label, type, name, placeholder }) => {
 }
 
 export const EditarPerfil = () => {
-  const { id } = useParams()
+  const id = localStorage.getItem('id_user')
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
