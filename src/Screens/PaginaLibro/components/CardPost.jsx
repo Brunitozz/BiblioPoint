@@ -2,6 +2,7 @@ import defatulImg from "./../../../assets/screen-0.jpg";
 import { CardComment } from "./CardComment";
 import { useEffect, useRef, useState } from "react";
 import { postComment } from "./../../../services/comment_service";
+import { NavLink } from "react-router-dom";
 
 const ButtonOpenDialog = ({ dialogRef }) => {
   const handleDialog = () => {
@@ -84,7 +85,8 @@ const Comentar = ({ dialogRef, idPost, onAddComment }) => {
   );
 };
 
-export const CardPost = ({ content, id, name, comments, onAddComment }) => {
+// id is id_post
+export const CardPost = ({ id_user, content, id, name, comments, onAddComment, children = null }) => {
   const dialogRef = useRef(null);
   return (
     <>
@@ -95,8 +97,9 @@ export const CardPost = ({ content, id, name, comments, onAddComment }) => {
           </div>
           <div className="flex flex-col gap-2">
             <div className="w-full flex flex-col gap-2">
-              <div className="w-full">
-                <h1 className="font-bold">{name}</h1>
+              <div className="w-full flex flex-col">
+                <NavLink to={`/main/perfil/${id_user}`} className="font-semibold" >{name}</NavLink>
+                {children}
                 <p>{content}</p>
               </div>
               <div className="flex gap-4">
@@ -104,12 +107,13 @@ export const CardPost = ({ content, id, name, comments, onAddComment }) => {
               </div>
             </div>
             <div className="flex flex-col gap-4">
-              {comments.map(({ comment, id_comment, name }) => (
+              {comments.map(({ comment, id_comment, name, id_user_comment }) => (
                 <CardComment
                   key={id_comment}
                   comment={comment}
                   idComment={id_comment}
                   name={name}
+                  id_user={id_user_comment}
                 />
               ))}
             </div>

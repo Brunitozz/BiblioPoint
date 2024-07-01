@@ -68,10 +68,10 @@ const PerfilUsuario = () => {
 
   const { name, image } = userData.data;
   const userPosts = Array.isArray(postsData?.data) ? postsData.data : [];
-
+  console.log(userPosts)
   return (
     <div className="w-full h-[840px] p-6 flex flex-col items-center gap-6 overflow-y-scroll">
-      <div className="flex flex-col gap-6 w-full">
+      <div className="flex flex-col gap-6 w-[800px]">
         <HeaderUser name={name} userId={id} image={image || imageExample} />
         <div className="text-xl font-bold">Publicaciones</div>
         {userPosts.length > 0 ? (
@@ -79,9 +79,11 @@ const PerfilUsuario = () => {
             <UserPost
               key={index}
               content={post.content}
-              id={post.id_post}
+              id_post={post.id_post}
+              id_user_post={id}
               name={name}
               comments={post.comments}
+              id_book={post.id_book}
               book={bookDetails[post.id_book]?.name || "Cargando..."}
             />
           ))

@@ -1,6 +1,7 @@
+import { NavLink } from 'react-router-dom'
 import defatulImg from './../../../assets/screen-0.jpg'
 
-export const CardComment = ({ comment, idComment, name}) => {
+export const CardComment = ({ comment, idComment, name, id_user}) => {
   return (
     <>
       <section>
@@ -9,7 +10,7 @@ export const CardComment = ({ comment, idComment, name}) => {
               <img src={defatulImg} alt="" />
             </div>
             <div className="flex flex-col">
-              <h1 className="font-bold">{ name }</h1>
+              <NavLink to={`/main/perfil/${id_user}`} className="font-semibold" >{name}</NavLink>
               <p>{ comment }</p>
             </div>
           </div>

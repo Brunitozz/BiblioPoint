@@ -15,6 +15,7 @@ export const PaginaLibro = () => {
   useEffect(() => {
     if (postData && postData.data) {
       setPosts(postData.data)
+      console.log(postData.data)
     }
   }, [postData])
 
@@ -95,16 +96,19 @@ export const PaginaLibro = () => {
           <h1 className="font-semibold text-2xl">Publicaciones</h1>
           <div className="w-full flex flex-col h-auto p-6 gap-4">
             {
-              posts.map(({ id_post, name, content, comments }, index) => (
-                <CardPost
-                  key={index}
-                  id={id_post}
-                  name={name}
-                  content={content}
-                  comments={comments}
-                  onAddComment={ handleAddComment }
-                />
-              ))
+              posts !== 'No hay posts' && (
+                posts.map(({ id_post, name, content, comments, id_user_post }, index) => (
+                  <CardPost
+                    key={index}
+                    id={id_post}
+                    name={name}
+                    content={content}
+                    comments={comments}
+                    onAddComment={ handleAddComment }
+                    id_user={id_user_post}
+                  />
+                ))
+              )
             }
           </div>
         </main>
