@@ -3,6 +3,7 @@ import axios from "axios";
 import { api } from "../../constants/api";
 import logo from "../../assets/Bibliopoint-Logo.png";
 import { useSearch } from "../../hooks/useSearch";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [busqueda, setBusqueda] = useState("");
@@ -18,12 +19,23 @@ export default function Navbar() {
   };
 
 
-  const handleSugerenciaClick = (titulo) => {
-    setBusqueda(titulo);
+  const handleSugerenciaClick = () => {
+    setBusqueda('');
     setIsSpanVisible(false);
   };
 
-  console.log(searchs);
+  const handleClickOutside = (event) => {
+    if (searchContainerRef.current && !searchContainerRef.current.contains(event.target)) {
+      setIsSpanVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
 
   return (
@@ -47,10 +59,11 @@ export default function Navbar() {
         {isSpanVisible > 0 && (
           <ul className="absolute bg-white border border-gray-300 rounded-lg mt-1 w-full max-h-48 overflow-y-auto">
             {searchs.map((sugerencia, index) => (
-              <li
+              <Link
                 key={index}
                 className="px-4 py-2 cursor-pointer hover:bg-gray-200 flex items-center justify-between"
-                onClick={() => handleSugerenciaClick(sugerencia.name)}
+                to={sugerencia.link}
+                onClick={handleSugerenciaClick}
               >
                 <div className="flex items-center">
                   {sugerencia.url_img && (
@@ -65,7 +78,7 @@ export default function Navbar() {
                 {sugerencia.username && (
                   <span className="text-gray-500">@{sugerencia.username}</span>
                 )}
-              </li>
+              </Link>
             ))}
           </ul>
         )}
