@@ -1,22 +1,25 @@
 import React from "react";
+import { CardPost } from "../PaginaLibro/components/CardPost";
 
-function Post({ id, author, content, likes, dislikes }) {
+export const UserPost = ({
+  content,
+  id,
+  name,
+  comments,
+  onAddComment,
+  book,
+}) => {
   return (
-    <div className="post">
-      <div className="post-header">
-        <p className="post-id">ID: {id}</p>
-        <p className="post-author">Autor: {author}</p>
-      </div>
-      <p>{content}</p>
-      <div className="comments">
-        <input type="text" placeholder="Agregar un comentario" />
-      </div>
-      <div className="post-actions">
-        <button>👍 Like ({likes})</button>
-        <button>👎 Dislike ({dislikes})</button>
-      </div>
+    <div className="mb-4">
+      {" "}
+      <div className="text-lg font-bold mb-2">Libro: {book}</div>{" "}
+      <CardPost
+        content={content}
+        id={id}
+        name={name}
+        comments={comments}
+        onAddComment={onAddComment}
+      />
     </div>
   );
-}
-
-export default Post;
+};
