@@ -46,7 +46,7 @@ export const EditarPerfil = () => {
         alert('Usuario Actualizado')
 
         //TODO: Redirigir a la página de perfil
-        navigate('/')
+        navigate(`/main/perfil/${id}`)
       } else {
         alert('Error al Actualizar Usuario')
       }
