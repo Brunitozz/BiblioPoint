@@ -1,23 +1,19 @@
 import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
-import { api } from "../../constants/api";
-import logo from "../../assets/Bibliopoint-Logo.png";
 import { useSearch } from "../../hooks/useSearch";
+import logo from "../../assets/Bibliopoint-Logo.png";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [busqueda, setBusqueda] = useState("");
-  const { searchs } = useSearch({ prefix: busqueda });
+  const { searchs, shortestPath } = useSearch({ prefix: busqueda });
   const searchContainerRef = useRef(null);
   const [isSpanVisible, setIsSpanVisible] = useState(false);
-
 
   const handleBusqueda = (e) => {
     const query = e.target.value;
     setBusqueda(query);
     setIsSpanVisible(true);
   };
-
 
   const handleSugerenciaClick = () => {
     setBusqueda('');
@@ -37,7 +33,6 @@ export default function Navbar() {
     };
   }, []);
 
-
   return (
     <nav className="bg-gray-200 p-4 flex justify-between items-center">
       <div className="flex items-center">
@@ -56,7 +51,7 @@ export default function Navbar() {
           placeholder="Buscar libros, autores, etc."
           onChange={handleBusqueda}
         />
-        {isSpanVisible > 0 && (
+        {isSpanVisible && (
           <ul className="absolute bg-white border border-gray-300 rounded-lg mt-1 w-full max-h-48 overflow-y-auto">
             {searchs.map((sugerencia, index) => (
               <Link
