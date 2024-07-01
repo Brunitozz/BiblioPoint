@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { LinksCuenta } from "../../Data/Links";
 import logo from "../../assets/Bibliopoint-Logo.png";
+import { Publicar } from "../../Screens/Publicar/Publicar";
 
 export const SideBarCuenta = () => {
   const [idUser, setIdUser] = useState(null);
@@ -11,6 +12,11 @@ export const SideBarCuenta = () => {
       setIdUser(userId);
     }
   }, []);
+
+  const handleOpenPost = () => {
+    const dialog = document.getElementById('dialog-add-post')
+    dialog.showModal()
+  }
 
   // NO mover links, es para que el navbar apunte a las direcciones del user logeado siempre
   const links = [
@@ -27,27 +33,6 @@ export const SideBarCuenta = () => {
           <path
             fill="currentColor"
             d="M6 19h3.692v-5.884h4.616V19H18v-9l-6-4.538L6 10zm-1 1V9.5l7-5.288L19 9.5V20h-5.692v-5.884h-2.616V20zm7-7.77"
-          />
-        </svg>
-      ),
-    },
-    {
-      name: "Publicar",
-      to: "/publicar",
-      svg: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="1em"
-          height="1em"
-          viewBox="0 0 24 24"
-        >
-          <path
-            fill="currentColor"
-            d="M17 19.22H5V7h7V5H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-7h-2z"
-          />
-          <path
-            fill="currentColor"
-            d="M19 2h-2v3h-3c.01.01 0 2 0 2h3v2.99c.01.01 2 0 2 0V7h3V5h-3zM7 9h8v2H7zm0 3v2h8v-2h-3zm0 3h8v2H7z"
           />
         </svg>
       ),
@@ -108,28 +93,55 @@ export const SideBarCuenta = () => {
   ];
 
   return (
-    <aside
-      className="fixed top-[75px] left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
-      aria-label="Sidebar"
-    >
-      <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-        <ul className="space-y-2 font-medium">
-          {links.map(({ name, to, svg }, index) => (
-            <li key={index}>
-              <a
-                href={to}
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+    <>
+      <aside
+        className="fixed top-[75px] left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+        aria-label="Sidebar"
+      >
+        <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+          <ul className="space-y-2 font-medium">
+            {links.map(({ name, to, svg }, index) => (
+              <li key={index}>
+                <a
+                  href={to}
+                  className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                >
+                  <svg className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white">
+                    {svg}
+                  </svg>
+                  <span className="ml-3">{name}</span>
+                </a>
+              </li>
+            ))}
+            <li>
+              <button
+                onClick={handleOpenPost}
+                className="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
-                <svg className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white">
-                  {svg}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 24 24"
+                  className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M17 19.22H5V7h7V5H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-7h-2z"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M19 2h-2v3h-3c.01.01 0 2 0 2h3v2.99c.01.01 2 0 2 0V7h3V5h-3zM7 9h8v2H7zm0 3v2h8v-2h-3zm0 3h8v2H7z"
+                  />
                 </svg>
-                <span className="ml-3">{name}</span>
-              </a>
+                <span className="ml-3">Publicar</span>
+              </button>
             </li>
-          ))}
-        </ul>
-      </div>
-    </aside>
+          </ul>
+        </div>
+      </aside>
+      <Publicar />
+    </>
   );
 };
 

@@ -28,7 +28,7 @@ const Amigos = () => {
               />
             ))
           ) : (
-            <div className="text-center text-gray-500">
+            <div className="w-screen text-gray-500">
               No hay amigos que mostrar.
             </div>
           )}
