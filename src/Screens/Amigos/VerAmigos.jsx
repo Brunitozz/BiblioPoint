@@ -9,24 +9,31 @@ const Amigos = () => {
   const queryParams = new URLSearchParams(location.search);
   const id = queryParams.get("id");
 
-  console.log(id)
-
   const { friends, loading, error } = useFriends(id);
-  console.log(friends);
 
   return (
     <div className="p-6">
       <p className="text-center text-2xl font-bold mb-6">Amigos</p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-        {friends.map((friend, index) => (
-          <Amigo
-            key={index}
-            id_user={friend.id_user}
-            name={friend.name}
-            image={defaultImage}
-          />
-        ))}
-      </div>
+      {loading && <div>Cargando amigos...</div>}
+      {error && <div>Error al cargar amigos: {error}</div>}
+      {!loading && !error && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          {friends.length > 0 ? (
+            friends.map((friend, index) => (
+              <Amigo
+                key={index}
+                id_user={friend.id_user}
+                name={friend.name}
+                image={defaultImage}
+              />
+            ))
+          ) : (
+            <div className="text-center text-gray-500">
+              No hay amigos que mostrar.
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };
