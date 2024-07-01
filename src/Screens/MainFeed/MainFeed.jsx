@@ -71,34 +71,6 @@ function MainContent() {
       </main>
     </>
   )
-
-  return (
-    <div className="bg-gray-200 w-full h-[820px] p-6 flex flex-col items-center gap-6 overflow-y-scroll">
-      <div className="w-[800px] flex items-center justify-center">
-        <div className="flex gap-2 w-full items-center justify-center">
-          <UserCard name="Kiltom Adolfo" />
-          <UserCard name="Bruno Pumapillo" />
-          <UserCard name="Brayan Alejandro" />
-          <UserCard name="Bob Brown" />
-          <UserCard name="Bob Brown" />
-          <UserCard name="Bob Brown" />
-        </div>
-        <div className="posts">
-          {posts.map((post) => (
-            <Post
-              key={post.id}
-              id={post.id}
-              author={post.author}
-              content={post.content}
-              likes={post.likes}
-              dislikes={post.dislikes}
-              comments={post.comments}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
 }
 
 export default MainContent;
