@@ -1,13 +1,15 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import Amigo from "./Amigo";
-import defaultImage from "../../icons/default-icon-profile.png";
+import defaultImage from "./../../assets/screen-0.jpg";
 import useFriends from "../../hooks/useFriends";
 
 const Amigos = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const id = queryParams.get("id");
+
+  console.log(id)
 
   const { friends, loading, error } = useFriends(id);
   console.log(friends);
