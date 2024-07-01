@@ -16,12 +16,12 @@ export const Login = () => {
       try {
         const response = await login(username, password); 
         console.log("Login successful:", response);
-        localStorage.setItem('token', response.access_token);
+        localStorage.setItem('token', response.access_token)
+        localStorage.setItem('id_user', response.id_user)
         console.log("Token added to localStorage:", response.access_token); 
-        window.location.href = '/main/feed'; 
+        window.location.href = '/main/feed'
       } catch (error) {
         console.error("Login failed:", error.message);
-      
       }
     };
 
