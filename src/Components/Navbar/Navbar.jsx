@@ -2,8 +2,10 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { api } from "../../constants/api";
 import logo from "../../assets/Bibliopoint-Logo.png";
+
 export default function Navbar() {
   const [libros, setLibros] = useState([]);
+  const [personas, setPersonas] = useState([]);
   const [busqueda, setBusqueda] = useState("");
   const [sugerencias, setSugerencias] = useState([]);
   const searchContainerRef = useRef(null);
@@ -11,7 +13,9 @@ export default function Navbar() {
   const peticionesGet = async () => {
     try {
       const response = await axios.get(api + "/book");
-      setLibros(response.data.data); // Accede al array dentro del objeto "data"
+      setLibros(response.data.data);
+      const response2 = await axios.get(api + "/user");
+      setPersonas(response2.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -28,10 +32,14 @@ export default function Navbar() {
   };
 
   const filtrar = (terminoBusqueda) => {
-    const resultadoDeBusqueda = libros.filter((libro) =>
+    const resultadoDeBusquedaLibros = libros.filter((libro) =>
       libro.name.toLowerCase().includes(terminoBusqueda.toLowerCase())
     );
-    setSugerencias(resultadoDeBusqueda);
+    const resultadoDeBusquedaPersonas = personas.filter((persona) =>
+      persona.name.toLowerCase().includes(terminoBusqueda.toLowerCase()) ||
+      persona.username.toLowerCase().includes(terminoBusqueda.toLowerCase())
+    );
+    setSugerencias([...resultadoDeBusquedaLibros, ...resultadoDeBusquedaPersonas]);
   };
 
   const handleSugerenciaClick = (titulo) => {
@@ -40,7 +48,10 @@ export default function Navbar() {
   };
 
   const handleClickOutside = (event) => {
-    if (searchContainerRef.current && !searchContainerRef.current.contains(event.target)) {
+    if (
+      searchContainerRef.current &&
+      !searchContainerRef.current.contains(event.target)
+    ) {
       setSugerencias([]);
     }
   };
@@ -53,11 +64,13 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="bg-gray-400 p-4 flex justify-between items-center">
+    <nav className="bg-gray-200 p-4 flex justify-between items-center">
       <div className="flex items-center">
         <a href="/main/feed" className="flex items-center">
           <img src={logo} alt="BiblioPoint Logo" className="h-8 w-8 mr-2" />
-          <span className="text-gray-800 text-2xl font-semibold">BiblioPoint</span>
+          <span className="text-gray-800 text-2xl font-semibold">
+            BiblioPoint
+          </span>
         </a>
       </div>
       <div className="relative" ref={searchContainerRef}>
@@ -70,14 +83,25 @@ export default function Navbar() {
         />
         {sugerencias.length > 0 && (
           <ul className="absolute bg-white border border-gray-300 rounded-lg mt-1 w-full max-h-48 overflow-y-auto">
-            {sugerencias.map((libro) => (
+            {sugerencias.map((sugerencia) => (
               <li
-                key={libro.id_book}
-                className="px-4 py-2 cursor-pointer hover:bg-gray-200"
-                onClick={() => handleSugerenciaClick(libro.name)}
+                key={sugerencia.id_book || sugerencia.id_user}
+                className="px-4 py-2 cursor-pointer hover:bg-gray-200 flex items-center justify-between"
+                onClick={() => handleSugerenciaClick(sugerencia.name || sugerencia.username)}
               >
-                <img src={libro.url_img} alt={libro.name} className="w-8 h-10 inline-block mr-2" />
-                {libro.name}
+                <div className="flex items-center">
+                  {sugerencia.url_img && (
+                    <img
+                      src={sugerencia.url_img}
+                      alt={sugerencia.name}
+                      className="w-8 h-10 inline-block mr-2"
+                    />
+                  )}
+                  <span>{sugerencia.name || sugerencia.username}</span>
+                </div>
+                {sugerencia.username && (
+                  <span className="text-gray-500">@{sugerencia.username}</span>
+                )}
               </li>
             ))}
           </ul>
