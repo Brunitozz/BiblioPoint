@@ -1,37 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { useBooks } from '../../hooks/useBooks'
 import { postPost } from '../../services/post_service'
-import { api } from '../../constants/api'
 import { useSearch } from '../../hooks/useSearch'
-
-const ButtonOpenDialog = () => {
-  const handleDialog = () => {
-    const dialog = document.getElementById('dialog-add-post')
-    dialog.showModal()
-  }
-
-  return (
-    <button onClick={handleDialog} className='fixed bottom-4 right-4 bg-blue-500 text-white rounded-full p-2 hover:bg-blue-800'>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <line x1="12" y1="5" x2="12" y2="19" />
-        <line x1="5" y1="12" x2="19" y2="12" />
-      </svg>
-    </button>
-  )
-}
-
-
 
 export const Publicar = () => {
   const [search, setSearch] = useState('')
@@ -61,7 +30,6 @@ export const Publicar = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    {/*NOTE: falta el id del id del user*/ }
     const response = await postPost({ id_user_post: id, id_book: selectIdBook, content });
     if (response) {
       alert('Post Creado')
@@ -76,11 +44,18 @@ export const Publicar = () => {
     dialog.close()
   }
 
+  const handleClosePost = () => {
+    const dialog = document.getElementById('dialog-add-post')
+    dialog.close()
+  }
+
   return (
     <>
-      <div>Post Dialog</div>
-      <ButtonOpenDialog />
       <dialog id='dialog-add-post' className='w-[90%] py-4 px-12 bg-gray-300 m-auto fixed backdrop:bg-black/50 rounded-xl'>
+        <span
+          className='absolute right-5 text-2xl hover:scale-110 hover:text-zinc-700 cursor-pointer'
+          onClick={handleClosePost}
+        >x</span>
         <h3 className='text-center uppercase text-3xl my-4'>Crear Post</h3>
         <form className='flex flex-col gap-4 relative' onSubmit={handleSubmit}>
           <input
