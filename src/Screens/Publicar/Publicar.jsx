@@ -40,6 +40,7 @@ export const Publicar = () => {
   const [selectIdBook, setSelectIdBook] = useState('')
   const [isSpanVisible, setIsSpanVisible] = useState(false)
 
+  const id = localStorage.getItem('id_user')
 
   const handleChange = useCallback(async (e) => {
     const { name, value } = e.target;
@@ -61,12 +62,18 @@ export const Publicar = () => {
     e.preventDefault();
 
     {/*NOTE: falta el id del id del user*/ }
-    const response = await postPost({ id_user_post: 3, id_book: selectIdBook, content });
+    const response = await postPost({ id_user_post: id, id_book: selectIdBook, content });
     if (response) {
       alert('Post Creado')
     } else {
       alert('Error al crear el post')
     }
+
+    setSearch('')
+    setContent('')
+
+    const dialog = document.getElementById('dialog-add-post')
+    dialog.close()
   }
 
   return (
@@ -90,7 +97,7 @@ export const Publicar = () => {
               {booksSearch.map(book => (
                 <button
                   type='button'
-                  key={book.id}
+                  key={book.id_book}
                   onClick={() => handleSelectBook(book)}
                   className='w-full px-2 py-1 hover:bg-gray-300'
                 >
