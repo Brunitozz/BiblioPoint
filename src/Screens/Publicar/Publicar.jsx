@@ -1,6 +1,8 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useBooks } from '../../hooks/useBooks'
 import { postPost } from '../../services/post_service'
+import { api } from '../../constants/api'
+import { useSearch } from '../../hooks/useSearch'
 
 const ButtonOpenDialog = () => {
   const handleDialog = () => {
@@ -29,34 +31,30 @@ const ButtonOpenDialog = () => {
   )
 }
 
+
+
 export const Publicar = () => {
   const [search, setSearch] = useState('')
-  const [booksSearch, setBooksSearch] = useState(null)
+  const { booksSearch } = useSearch({ prefix: search })
   const [content, setContent] = useState('')
   const [selectIdBook, setSelectIdBook] = useState('')
+  const [isSpanVisible, setIsSpanVisible] = useState(false)
 
-  const { books } = useBooks()
 
-  const handleChange = useCallback((e) => {
+  const handleChange = useCallback(async (e) => {
     const { name, value } = e.target;
     if (name === 'search') {
-
       setSearch(value);
-      if (value.trim().length > 2) {
-        const searchBooks = books.filter(book => book.name.toLowerCase().startsWith(value.toLowerCase()));
-        setBooksSearch(searchBooks);
-      } else {
-        setBooksSearch([]);
-      }
-    } else if (name === 'content') {
-      setContent(value);
+      setIsSpanVisible(true);
     }
-  }, [books]);
+    if (name === 'content') setContent(value);
+  }, [search]);
+
 
   const handleSelectBook = useCallback((book) => {
     setSelectIdBook(book.id_book);
     setSearch(book.name);
-    setBooksSearch([]);
+    setIsSpanVisible(false);
   }, []);
 
   const handleSubmit = async (e) => {
@@ -87,7 +85,7 @@ export const Publicar = () => {
             className='w-full rounded-lg px-2 py-1 my-2'
             required
           />
-          {booksSearch && booksSearch.length > 0 && (
+          {isSpanVisible && (
             <span className='absolute w-full top-12 bg-gray-200 h-36 overflow-y-scroll border-2 border-gray-400 rounded-lg'>
               {booksSearch.map(book => (
                 <button
