@@ -25,6 +25,7 @@ export const App = () => {
           <Route path="libros/:idBook" element={<PaginaLibro />} />
           <Route path="amigos" element={<Amigos />} />
           <Route path="perfil/:id" element={<PerfilUsuario />} />
+          <Route path="publicar" element={<Publicar />} />
         </Route>
         <Route path="/init" element={<NavLayout />}>
           <Route path="login" element={<Login />} />

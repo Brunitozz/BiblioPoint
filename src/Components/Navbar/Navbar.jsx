@@ -2,66 +2,29 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { api } from "../../constants/api";
 import logo from "../../assets/Bibliopoint-Logo.png";
+import { useSearch } from "../../hooks/useSearch";
 
 export default function Navbar() {
-  const [libros, setLibros] = useState([]);
-  const [personas, setPersonas] = useState([]);
   const [busqueda, setBusqueda] = useState("");
-  const [sugerencias, setSugerencias] = useState([]);
+  const { searchs } = useSearch({ prefix: busqueda });
   const searchContainerRef = useRef(null);
+  const [isSpanVisible, setIsSpanVisible] = useState(false);
 
-  const peticionesGet = async () => {
-    try {
-      const response = await axios.get(api + "/book");
-      setLibros(response.data.data);
-      const response2 = await axios.get(api + "/user");
-      setPersonas(response2.data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    peticionesGet();
-  }, []);
 
   const handleBusqueda = (e) => {
     const query = e.target.value;
     setBusqueda(query);
-    filtrar(query);
+    setIsSpanVisible(true);
   };
 
-  const filtrar = (terminoBusqueda) => {
-    const resultadoDeBusquedaLibros = libros.filter((libro) =>
-      libro.name.toLowerCase().includes(terminoBusqueda.toLowerCase())
-    );
-    const resultadoDeBusquedaPersonas = personas.filter((persona) =>
-      persona.name.toLowerCase().includes(terminoBusqueda.toLowerCase()) ||
-      persona.username.toLowerCase().includes(terminoBusqueda.toLowerCase())
-    );
-    setSugerencias([...resultadoDeBusquedaLibros, ...resultadoDeBusquedaPersonas]);
-  };
 
   const handleSugerenciaClick = (titulo) => {
     setBusqueda(titulo);
-    setSugerencias([]);
+    setIsSpanVisible(false);
   };
 
-  const handleClickOutside = (event) => {
-    if (
-      searchContainerRef.current &&
-      !searchContainerRef.current.contains(event.target)
-    ) {
-      setSugerencias([]);
-    }
-  };
+  console.log(searchs);
 
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
 
   return (
     <nav className="bg-gray-200 p-4 flex justify-between items-center">
@@ -81,13 +44,13 @@ export default function Navbar() {
           placeholder="Buscar libros, autores, etc."
           onChange={handleBusqueda}
         />
-        {sugerencias.length > 0 && (
+        {isSpanVisible > 0 && (
           <ul className="absolute bg-white border border-gray-300 rounded-lg mt-1 w-full max-h-48 overflow-y-auto">
-            {sugerencias.map((sugerencia) => (
+            {searchs.map((sugerencia, index) => (
               <li
-                key={sugerencia.id_book || sugerencia.id_user}
+                key={index}
                 className="px-4 py-2 cursor-pointer hover:bg-gray-200 flex items-center justify-between"
-                onClick={() => handleSugerenciaClick(sugerencia.name || sugerencia.username)}
+                onClick={() => handleSugerenciaClick(sugerencia.name)}
               >
                 <div className="flex items-center">
                   {sugerencia.url_img && (
