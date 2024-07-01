@@ -14,7 +14,7 @@ function MainContent() {
   }, []);
 
   return (
-    <div className="w-full h-[820px] flex-wrap p-6 flex flex-col items-center gap-6 overflow-y-scroll">
+    <div className="bg-gray-200 w-full h-[820px] flex-wrap p-6 flex flex-col items-center gap-6 overflow-y-scroll">
       <div className="main-content">
         <div className="recommended-friends">
           <UserCard name="Kiltom Adolfo" />
