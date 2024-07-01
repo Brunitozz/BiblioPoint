@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const HeaderUser = ({ name, image, userId }) => {
-  const { id } = useParams();
+  // Obtener id_user desde localStorage
+  const id_user = localStorage.getItem("id_user");
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
+  const [id_applicant, setIdApplicant] = useState(id_user); // Inicializar con id_user
+
+  useEffect(() => {
+    // Actualizar id_applicant si id_user cambia en localStorage
+    setIdApplicant(id_user);
+  }, [id_user]);
 
   const handleAddFriend = async () => {
     setLoading(true);
@@ -14,12 +22,9 @@ const HeaderUser = ({ name, image, userId }) => {
 
     const apiUrl = `http://127.0.0.1:5000/send/friends/requests`;
     const requestData = {
-      id_applicant: 7, // Supongamos que obtienes esto del usuario actual
+      id_applicant: id_applicant, // Utilizar id_applicant del estado
       id_receiver: userId, // Este sería el ID del usuario cuyo perfil se está mostrando
     };
-
-    console.log("id_applicant:", requestData.id_applicant);
-    console.log("id_receiver:", requestData.id_receiver);
 
     const options = {
       method: "POST",
@@ -45,6 +50,9 @@ const HeaderUser = ({ name, image, userId }) => {
     }
   };
 
+  // Verificar si id_receiver es igual a id_applicant para ocultar el botón
+  const showAddButton = id_applicant !== userId;
+
   return (
     <div className=" ">
       <div className="flex flex-row flex-1 items-end">
@@ -60,13 +68,15 @@ const HeaderUser = ({ name, image, userId }) => {
             <div className="">{name}</div>
           </div>
           <div className="flex flex-col items-center text-center flex-1">
-            <button
-              className="bg-slate-600 rounded-lg h-16 w-28"
-              onClick={handleAddFriend}
-              disabled={loading}
-            >
-              {loading ? "Enviando solicitud..." : "Agregar a amigos"}
-            </button>
+            {showAddButton && (
+              <button
+                className="bg-slate-600 rounded-lg h-16 w-28"
+                onClick={handleAddFriend}
+                disabled={loading}
+              >
+                {loading ? "Enviando solicitud..." : "Agregar a amigos"}
+              </button>
+            )}
             {error && <p>Error: {error}</p>}
             {success && <p>Solicitud enviada correctamente</p>}
           </div>
